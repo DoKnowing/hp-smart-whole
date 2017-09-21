@@ -1,10 +1,10 @@
 package hp.smart.whole.tagger;
 
 import com.alibaba.fastjson.JSON;
+import com.yeezhao.commons.util.Pair;
 import hp.smart.whole.structure.Tree;
 import hp.smart.whole.util.parser.SmartFileUtils;
 import hp.smart.whole.util.parser.interfaces.SmartTxtLineParser;
-import javafx.util.Pair;
 
 import java.io.*;
 import java.util.*;

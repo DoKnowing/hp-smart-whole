@@ -18,26 +18,28 @@ public class WordSpliter {
     public List<String> splitWord(String sentence) {
         List<String> splitedWords = new LinkedList<String>();
         String[] compWords = sentence.split(" ");
-        for (String compWord : compWords) {
-            int start = 0;
-            int end = 0;
-            while (start < compWord.length()) {
-                char firstWord = compWord.charAt(start);
-                if (firstWord >= 'A' && firstWord <= 'z') {
-                    while (end < compWord.length() && compWord.charAt(end) >= 'A' && compWord.charAt(end) <= 'z') {
+        for(String compWord:compWords){
+            int start=0;
+            int end=0;
+            while (start<compWord.length()){
+                char firstWord=compWord.charAt(start);
+                if((firstWord>='A' && firstWord<='Z') || (firstWord>='a' && firstWord<='z')){
+                    while(end<compWord.length() &&
+                            ((compWord.charAt(end)>='A' && compWord.charAt(end)<='Z') ||
+                                    ((compWord.charAt(end))>='a' && compWord.charAt(end)<='z'))){
                         end++;
                     }
-                    splitedWords.add(compWord.substring(start, end).toLowerCase());
-                } else if (firstWord <= '9') {
-                    while (end < compWord.length() && compWord.charAt(end) <= '9') {
+                    splitedWords.add(compWord.substring(start,end).toLowerCase());
+                }else if(Character.isDigit(firstWord)){
+                    while(end<compWord.length() && Character.isDigit(compWord.charAt(end))){
                         end++;
                     }
-                    splitedWords.add(compWord.substring(start, end));
-                } else {
+                    splitedWords.add(compWord.substring(start,end));
+                }else{
                     end++;
-                    splitedWords.add(compWord.substring(start, end));
+                    splitedWords.add(compWord.substring(start,end));
                 }
-                start = end;
+                start=end;
             }
         }
         return splitedWords;

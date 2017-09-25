@@ -30,14 +30,41 @@ public class SparkClusterTest implements Serializable {
                 .set("spark.cores.max", "2")
 //                .set("spark.local.dir", "/tmp/spark")
                 .set("spark.executor.memory", "1024m")
-                .set("spark.default.parallelism", "2");
+                .set("spark.default.parallelism", "2")
+                .set("spark.eventLog.enabled", "true")
+                .set("spark.eventLog.dir", "hdfs://smart-master:8020/spark/logs/histoty")
+                .set("spark.history.fs.logDirectory", "hdfs://smart-master:8020/spark/logs/histoty");
+
         return sparkConf;
     }
 
-    public void test(String input) throws InterruptedException {
+
+    public SparkConf createSparkConfYarn() {
+        SparkConf sparkConf = new SparkConf()
+                .setMaster("yarn-client")
+                .setAppName("SparkClusterTestYarn")
+                .setJars(JavaSparkContext.jarOfClass(SparkClusterTest.class))
+                .set("spark.akka.timeout", "1000")
+                .set("spark.cores.max", "2")
+                .set("spark.default.parallelism", "2")
+                .set("spark.executor.memory", "1024m")
+                .set("spark.executor.cores", "1")
+//                .set("spark.yarn.jar", SmartConfiguration.getInstance().get("spark.yarn.jar"))
+                .set("spark.speculation.multiplier", "1.0")
+                // 添加spark重试次数
+                .set("spark.port.maxRetries", "100");
+        return sparkConf;
+    }
+
+    public void test(String input, boolean yarn) throws InterruptedException {
         LOG.info("[Test] test spark ...");
 
-        JavaSparkContext jsc = new JavaSparkContext(createSparkConf());
+        JavaSparkContext jsc = null;
+        if (yarn) {
+            jsc = new JavaSparkContext(createSparkConfYarn());
+        } else {
+            jsc = new JavaSparkContext(createSparkConf());
+        }
         JavaRDD<String> rdd = jsc.textFile(input);
         rdd.persist(StorageLevel.MEMORY_AND_DISK());
         LOG.info("[Test] 读取数据");
@@ -78,6 +105,10 @@ public class SparkClusterTest implements Serializable {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        new SparkClusterTest().test("hdfs://smart-master:8020/tmp/sma/test");
+        boolean yarn = true;
+        if (args != null && args[0].equals("local")) {
+            yarn = false;
+        }
+        new SparkClusterTest().test("hdfs://smart-master:8020/tmp/sma/test", yarn);
     }
 }

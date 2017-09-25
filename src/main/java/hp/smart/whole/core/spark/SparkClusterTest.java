@@ -49,7 +49,7 @@ public class SparkClusterTest implements Serializable {
                 .set("spark.default.parallelism", "2")
                 .set("spark.executor.memory", "1024m")
                 .set("spark.executor.cores", "1")
-//                .set("spark.yarn.jar", SmartConfiguration.getInstance().get("spark.yarn.jar"))
+                .set("spark.yarn.jar", "hdfs://smart-master:8020/spark/jars/*.jar")
                 .set("spark.speculation.multiplier", "1.0")
                 // 添加spark重试次数
                 .set("spark.port.maxRetries", "100");

@@ -29,7 +29,7 @@ public class SparkClusterTest implements Serializable {
 //                .set("spark.master.url", "local")
                 .setJars(JavaSparkContext.jarOfClass(SparkClusterTest.class))
                 .set("spark.cores.max", "2")
-//                .set("spark.local.dir", "/tmp/spark")
+                .set("spark.local.dir", "/tmp/spark")
                 .set("spark.executor.memory", "1024m")
                 .set("spark.default.parallelism", "2")
                 .set("spark.eventLog.enabled", "true")

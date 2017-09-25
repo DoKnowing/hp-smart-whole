@@ -21,9 +21,9 @@ public class SparkUtil {
                 .setJars(JavaSparkContext.jarOfClass(klass))
                 .set("spark.akka.timeout", "1000")
                 .set("spark.cores.max", SmartConfiguration.getInstance().get("spark.task.cores"))
-                .set("spark.default.parallelism", "50")
-                .set("spark.executor.memory", "2500m")
-                .set("spark.executor.cores", "2")
+                .set("spark.default.parallelism", "2")
+                .set("spark.executor.memory", "1024")
+                .set("spark.executor.cores", "1")
                 .set("spark.yarn.jar", SmartConfiguration.getInstance().get("spark.yarn.jar"))
                 .set("spark.speculation.multiplier", "1.0")
                 // 添加spark重试次数

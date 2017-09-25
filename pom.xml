@@ -17,7 +17,7 @@
         <b.hdp.version>.2.4.2.0-258</b.hdp.version>
         <es.version>2.3.3</es.version>
         <es.hadoop.version>5.5.0</es.hadoop.version>
-        <spark.version>2.2.0</spark.version>
+        <spark.version>2.1.0</spark.version>
         <flink.version>1.3.0</flink.version>
         <kafka.version>0.8.2.2</kafka.version>
         <!--<hadoop.version>2.7.1.2.4.2.0-258</hadoop.version>-->
@@ -104,6 +104,7 @@
             <artifactId>kafka_2.10</artifactId>
             <version>${kafka.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_2.10</artifactId>

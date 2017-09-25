@@ -121,15 +121,15 @@
             </properties>
         </profile>
 
-        <profile>
-            <id>rocket</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <envDir>rocket</envDir>
-            </properties>
-        </profile>
+        <!--<profile>-->
+            <!--<id>rocket</id>-->
+            <!--<activation>-->
+                <!--<activeByDefault>true</activeByDefault>-->
+            <!--</activation>-->
+            <!--<properties>-->
+                <!--<envDir>rocket</envDir>-->
+            <!--</properties>-->
+        <!--</profile>-->
     </profiles>
 
     <build>

@@ -18,10 +18,10 @@ public class SmartConfiguration extends Configuration {
 
     private SmartConfiguration() {
         this.addResource("dev/smart-config.xml");
-        this.addResource("dev/core-site.xml");
-        this.addResource("dev/hdfs-site.xml");
-        this.addResource("dev/mapred-site.xml");
-        this.addResource("dev/yarn-site.xml");
+        this.addResource("core-site.xml");
+        this.addResource("hdfs-site.xml");
+        this.addResource("mapred-site.xml");
+        this.addResource("yarn-site.xml");
     }
 
     public static SmartConfiguration getInstance() {

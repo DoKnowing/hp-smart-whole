@@ -42,6 +42,6 @@ public class SparkClusterTest implements Serializable {
     }
 
     public static void main(String[] args) {
-        new SparkClusterTest().test("hdfs://tmp/sma/test");
+        new SparkClusterTest().test("hdfs://smart-master:8020/tmp/sma/test");
     }
 }

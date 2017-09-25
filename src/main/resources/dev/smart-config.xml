@@ -32,5 +32,10 @@
         <value>1000</value>
     </property>
 
+    <!-- spark -->
+    <property>
+        <name>spark.yarn.jar</name>
+        <value>hdfs://smart-master:8020/spark/jars/spark-assembly-1.6.3-hadoop2.6.0.jar</value>
+    </property>
 
 </configuration>

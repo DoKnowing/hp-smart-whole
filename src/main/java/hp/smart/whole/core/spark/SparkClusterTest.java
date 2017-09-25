@@ -1,5 +1,6 @@
 package hp.smart.whole.core.spark;
 
+import hp.smart.whole.util.SmartConfiguration;
 import org.apache.commons.lang.StringUtils;
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
@@ -49,7 +50,7 @@ public class SparkClusterTest implements Serializable {
                 .set("spark.default.parallelism", "2")
                 .set("spark.executor.memory", "1024m")
                 .set("spark.executor.cores", "1")
-                .set("spark.yarn.jar", "hdfs://smart-master:8020/spark/jars/*.jar")
+                .set("spark.yarn.jar", SmartConfiguration.getInstance().get("spark.yarn.jar"))
                 .set("spark.speculation.multiplier", "1.0")
                 // 添加spark重试次数
                 .set("spark.port.maxRetries", "100");

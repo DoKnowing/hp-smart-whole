@@ -14,7 +14,7 @@ import java.util.NoSuchElementException;
 public class SparkUtil {
     public static SparkConf createSparkConf(Class klass, String master, String appName, String esHttpNodes, Map<String, String> customizedConf) {
         SmartConfiguration.LOG.debug("[SmartConfiguration] master : {}, appName : {} , esNodes : {}", master, appName, esHttpNodes);
-
+        System.out.println("[Yarn Jar] " + SmartConfiguration.getInstance().get("spark.yarn.jar"));
         SparkConf sparkConf = new SparkConf()
                 .setMaster(master)
                 .setAppName(appName)

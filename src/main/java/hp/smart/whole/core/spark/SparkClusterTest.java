@@ -26,7 +26,7 @@ public class SparkClusterTest implements Serializable {
         SparkConf sparkConf = new SparkConf().setAppName("SparkClusterTestAlone")
 //                .setMaster("local[2]")
                 .setMaster("spark://smart-master:9099")
-                .set("spark.master.url", "spark://smart-master:9099")
+//                .set("spark.master.url", "spark://smart-master:9099")
                 .setJars(JavaSparkContext.jarOfClass(SparkClusterTest.class))
                 .set("spark.cores.max", "2")
                 .set("spark.local.dir", "/tmp/spark")

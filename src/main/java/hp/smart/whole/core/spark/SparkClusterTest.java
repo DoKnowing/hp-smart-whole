@@ -26,16 +26,15 @@ public class SparkClusterTest implements Serializable {
         SparkConf sparkConf = new SparkConf().setAppName("SparkClusterTestAlone")
 //                .setMaster("local[2]")
                 .setMaster("spark://smart-master:9099")
-//                .set("spark.master.url", "spark://smart-master:9099")
                 .setJars(JavaSparkContext.jarOfClass(SparkClusterTest.class))
                 .set("spark.cores.max", "2")
                 .set("spark.local.dir", "/tmp/spark")
                 .set("spark.executor.memory", "1024m")
                 .set("spark.default.parallelism", "2")
-//                .set("spark.eventLog.enabled", "true")
-//                .set("spark.eventLog.dir", "hdfs://smart-master:8020/spark/logs/histoty")
-//                .set("spark.history.fs.logDirectory", "hdfs://smart-master:8020/spark/logs/histoty")
-                ;
+                .set("spark.eventLog.enabled", "true")
+                .set("spark.eventLog.dir", "hdfs://smart-master:8020/spark/logs/histoty")
+                .set("spark.history.fs.logDirectory", "hdfs://smart-master:8020/spark/logs/histoty")
+                .set("spark.files", "file:///opt/software/spark/spark/conf/hdfs-site.xml,file:///opt/software/spark/spark/conf/core-site.xml");
         String sparkHome = System.getenv("SPARK_HOME");
         if (sparkHome != null) {
             sparkConf.setSparkHome(sparkHome);

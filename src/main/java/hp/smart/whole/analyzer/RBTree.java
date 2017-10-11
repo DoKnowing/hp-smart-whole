@@ -235,6 +235,7 @@ public class RBTree {
 
     @Test
     public void test(){
+        //https://www.2cto.com/kf/201104/87319.html
         System.out.println("-----------");
         int[] arr={12,1,9,2,0,11,7, 19, 4, 15 ,18, 5 ,14, 13 ,10, 16, 6, 3, 8, 17};
         for(int i=0;i<arr.length;i++){

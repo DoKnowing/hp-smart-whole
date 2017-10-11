@@ -37,8 +37,8 @@ CLASSPATH=${CLASSPATH}:${JAR_NAME}
 params=$@
 
 ## 待修改
-if [ "$COMMAND" = "QueueManageCli" ]; then
-    CLASS=com.ds.octopus.job.cli.QueueManageCli
+if [ "$COMMAND" = "Test" ]; then
+    CLASS=hp.smart.whole.core.spark.SparkClusterTest
 elif [ "$COMMAND" = "RandomGroupCli" ]; then
     CLASS=com.ds.octopus.tools.randomgroup.RandomGroupCli
 elif [ "$COMMAND" = "NewsforumInfoCli" ]; then

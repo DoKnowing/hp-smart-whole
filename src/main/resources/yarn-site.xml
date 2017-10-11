@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+<configuration>
+
+<!-- Site specific YARN configuration properties -->
+
+     <property>
+            <description>Enable RM high-availability. When enabled,
+                         (1) The RM starts in the Standby mode by default, and transitions to the Active mode when prompted to.
+                         (2) The nodes in the RM ensemble are listed in yarn.resourcemanager.ha.rm-ids
+                         (3) The id of each RM either comes from yarn.resourcemanager.ha.id if yarn.resourcemanager.ha.id is explicitly specified or can be figured out by matching yarn.resourcemanager.address.{id} with local address
+                         (4) The actual physical addresses come from the configs of the pattern - {rpc-config}.{id}
+           </description>
+           <name>yarn.resourcemanager.ha.enabled</name>
+           <value>false</value>
+    </property>
+    <property>
+           <name>yarn.resourcemanager.zk-timeout-ms</name>
+           <value>30000</value>
+    </property>
+    <property>
+            <description>Enable automatic failover.By default, it is enabled only when HA is enabled</description>
+            <name>yarn.resourcemanager.ha.automatic-failover.enabled</name>
+            <value>true</value>
+    </property>
+    <property>
+	<description>When HA is enabled, the number of retries per attempt to connect to a
+		ResourceManager. In other words,it is the ipc.client.connect.max.retries to be 
+   	used during failover attempts
+   											 												 </description>
+   	<name>yarn.client.failover-retries</name>
+   	<value>5</value>
+   </property>
+   <property>
+	<description>When HA is enabled, the number of retries per attempt to connect to a 
+		ResourceManager on socket timeouts. In other words, it is the 
+	ipc.client.connect.max.retries.on.timeouts to be used during failover attempts
+	</description>
+	<name>yarn.client.failover-retries-on-socket-timeouts</name>
+	<value>3</value>
+   </property>
+
+    <property>
+            <description>
+            Name of the cluster. In a HA setting,this is used to ensure the RM participates in leader election for this cluster and ensures it does not affect other clusters
+            </description>
+            <name>yarn.resourcemanager.cluster-id</name>
+            <value>yarncluster</value>
+    </property>
+
+    <property>
+             <description>The list of RM nodes in the cluster when HA is enabled. See description of yarn.resourcemanager.ha.enabled for full details on how this is used.
+             </description>
+             <name>yarn.resourcemanager.ha.rm-ids</name>
+             <value>rm1</value>
+    </property>
+    
+    <property>
+             <name>yarn.nodemanager.address</name>
+             <value>0.0.0.0:50000</value>
+    </property>
+
+ 
+    <property>
+             <name>yarn.resourcemanager.hostname.rm1</name>
+             <value>smart-master</value>
+    </property>
+
+    <property>
+             <description>Host:Port of the ZooKeeper server to be used by the RM. This
+                           must be supplied when using the ZooKeeper based implementation of the RM state store and/or embedded automatic failover in a HA setting.
+             </description>
+            <name>yarn.resourcemanager.zk-address</name>
+            <value>smart-master:2181,smart-slave1:2181,smart-slave2:2181</value>
+   </property>
+   <property>
+            <description>Enable RM to recover state after starting. If true, then
+                             yarn.resourcemanager.store.class must be specified.
+            </description>
+            <name>yarn.resourcemanager.recovery.enabled</name>
+            <value>true</value>
+   </property>
+
+    <property>
+            <description>The class to use as the persistent store. If org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore
+                               is used, the store is implicitly fenced; meaning a single ResourceManager
+                                   is able to use the store at any point in time. More details on this
+                             implicit fencing, along with setting up appropriate ACLs is discussed
+                          under yarn.resourcemanager.zk-state-store.root-node.acl.
+           </description>
+            <name>yarn.resourcemanager.store.class</name>
+           <value>org.apache.hadoop.yarn.server.resourcemanager.recovery.ZKRMStateStore</value>
+   </property>
+
+   <property>
+      <name>yarn.nodemanager.aux-services</name>
+      <value>mapreduce_shuffle</value>
+   </property>
+
+   <property>
+         <name>yarn.nodemanager.local-dirs</name>
+         <value>file:///hdfsdata/hdfsdata/nm-local-dir</value>
+   </property>
+
+   <property>
+    <name>yarn.resourcemanager.scheduler.class</name>
+    <!-- <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler</value> -->
+    <!-- <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.fifo.FifoScheduler</value> -->
+         <value>org.apache.hadoop.yarn.server.resourcemanager.scheduler.capacity.CapacityScheduler</value>
+  </property>
+	<!--
+   <property>
+             <name>yarn.scheduler.fair.allocation.file</name>
+             <value>/opt/software/hadoop/hdfs/etc/hadoop/fair-scheduler.xml</value>
+   </property>
+   -->
+
+   <property>
+           <name>yarn.scheduler.fair.preemption</name>
+           <value>true</value>
+           <description>Whether to use preemption.</description>
+   </property>
+   <property>
+           <name>yarn.scheduler.increment-allocation-mb</name>
+           <value>32</value>
+   </property>
+   <property>
+           <name>yarn.scheduler.minimum-allocation-mb</name>
+           <value>64</value>
+           <description>The minimum allocation for every container request at the RM, 
+                   in MBs. Memory requests lower than this won't take effect, and 
+                   the specified value will get allocated at minimum.
+           </description>
+   </property>
+
+    <property>
+          <name>yarn.nodemanager.resource.memory-mb</name>
+          <value>2048</value>
+          <description>Amount of physical memory, in MB, that can be allocated
+                       for containers.</description>
+     </property>
+  
+     <property>
+         <name>yarn.nodemanager.resource.cpu-vcores</name>
+         <value>4</value>
+         <description>Number of vcores that can be allocated
+             for containers. This is used by the RM scheduler when allocating
+             resources for containers. This is not used to limit the number of
+             physical cores used by YARN containers.</description>
+     </property>
+
+     <property>
+              <name>yarn.nodemanager.vmem-pmem-ratio</name>
+              <value>2.1</value>
+              <description>Ratio between virtual memory to physical memory when
+                          setting memory limits for containers. Container allocations are
+                          expressed in terms of physical memory, and virtual memory usage
+                          is allowed to exceed this allocation by this ratio.
+              </description>
+     </property>
+
+     <property>
+              <name>yarn.log-aggregation.retain-check-interval-seconds</name>
+              <value>86400</value>
+              <description>How long to wait between aggregated log retention checks. If set to 0 or a negative value
+               then the value is computed as one-tenth of the aggregated log retention time. Be careful
+               set this too small and you will spam the name node.
+              </description>
+     </property>
+     <property>
+              <name>yarn.log-aggregation.retain-seconds</name>
+              <value>2592000</value>
+              <description> How long to keep aggregation logs before deleting them. -1 disables. Be careful set this
+                            too small and you will spam
+              </description>
+     </property>      
+      <property>
+              <name>yarn.log-aggregation-enable</name>
+              <value>true</value>
+              <description>Whether to enable log aggregation. Log aggregation collects
+                           each container's logs and moves these logs onto a file-system, for e.g.
+                           HDFS, after the application completes. Users can configure the
+                           "yarn.nodemanager.remote-app-log-dir" and
+                           "yarn.nodemanager.remote-app-log-dir-suffix" properties to determine
+                            where these logs are moved to. Users can access the logs via the
+                            Application Timeline Server.
+               </description>
+       </property>
+       <!--
+       <property>
+            <name>yarn.web-proxy.address</name>
+            <value>smart-master:8034</value>
+            <description>The address for the web proxy as HOST:PORT, if this is not
+                       given then the proxy will run as part of the RM
+            </description>
+       </property>
+       --> 
+       <property>
+             <name>yarn.nodemanager.vmem-check-enabled</name>
+             <value>false</value>
+             <description>Whether virtual memory limits will be enforced for containers.</description>
+       </property>
+       <property>
+                   <name>yarn.resourcemanager.address</name>
+		   <value>smart-master:8032</value>
+        </property>
+	<property>
+	        <name>yarn.resourcemanager.scheduler.address</name>
+		<value>smart-master:8030</value>
+	</property>
+	<property>
+		<name>yarn.resourcemanager.resource-tracker.address</name>
+		<value>smart-master:8031</value>
+	</property>
+	<property>
+		<name>yarn.resourcemanager.admin.address</name>
+		<value>smart-master:8033</value>
+	</property>
+	<property>
+		<name>yarn.resourcemanager.webapp.address</name>
+		<value>smart-master:8088</value>
+	</property>
+</configuration>

@@ -2,5 +2,40 @@
 <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 
 <configuration>
+    <!-- kafka -->
+    <property>
+        <name>kafka.serializer.class</name>
+        <value>kafka.serializer.StringEncoder</value>
+    </property>
+    <property>
+        <name>kafka.metadata.broker.list</name>
+        <value>devrhino1:6667</value>
+    </property>
+    <property>
+        <name>group.id</name>
+        <value>test-user-sma</value>
+    </property>
+    <property>
+        <name>kafka.zookeeper.connect</name>
+        <value>devrhino1:2181,devrhino2:2181,devrhino3:2181</value>
+    </property>
+    <property>
+        <name>kafka.zookeeper.session.timeout.ms</name>
+        <value>4000</value>
+    </property>
+    <property>
+        <name>kafka.zookeeper.sync.time.ms</name>
+        <value>200</value>
+    </property>
+    <property>
+        <name>kafka.auto.commit.interval.ms</name>
+        <value>1000</value>
+    </property>
+
+    <!-- spark -->
+    <property>
+        <name>spark.yarn.jar</name>
+        <value>hdfs://smart-master:8020/spark/jars/spark-assembly-1.6.3-hadoop2.6.0.jar</value>
+    </property>
 
 </configuration>

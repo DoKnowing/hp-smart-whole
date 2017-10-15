@@ -45,6 +45,6 @@ public class SmartConfiguration extends Configuration {
 
 
     public static void main(String[] args) {
-        System.out.println(new SmartConfiguration().getHome("tencent_mabiao_0826_new.txt"));
+        System.out.println(SmartConfiguration.getHome("tencent_mabiao_0826_new.txt"));
     }
 }

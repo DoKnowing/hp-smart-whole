@@ -35,13 +35,23 @@ public class SmartFileLoadUtil {
     }
 
     public static String getFullPath(String resourceName) {
-        return SmartFileLoadUtil.class.getClassLoader().getResource(resourceName).getPath();
+        return getFullPath(resourceName, true);
 
+    }
+
+    public static String getFullPath(String resourceName, boolean isFull) {
+        if (isFull) {
+            return resourceName;
+        }
+        return SmartFileLoadUtil.class.getClassLoader().getResource(resourceName).getPath();
     }
 
     public static Sheet loadExcel(String excelName, int sheetNumber) throws Exception {
         // estimate file is excel(xlsx.xls) file
         File file = new File(getFullPath(excelName));
+        if (!file.exists()) {
+            file = new File(getFullPath(excelName, false));
+        }
         if (!file.exists() || !file.isFile()) {
             throw new Exception(file.getAbsolutePath() + " is not exists or it's not file");
         }

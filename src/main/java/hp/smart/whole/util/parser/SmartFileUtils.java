@@ -76,13 +76,4 @@ public class SmartFileUtils {
         reader.close();
         reader = null;
     }
-
-    public static void main(String[] args) throws Exception {
-        loadTxtFile("C:\\Users\\SMA\\Desktop\\数据中心\\数据中心.txt", new SmartTxtLineParser() {
-            @Override
-            public void parser(String line) {
-                System.out.println(line);
-            }
-        });
-    }
-    }
+}

@@ -38,12 +38,15 @@ public class SmartFileLoadUtil {
     }
 
     public static String getResourceFullPath(String resoureName) {
+        if (new File(resoureName).exists()) {
+            return resoureName;
+        }
         return SmartFileLoadUtil.class.getClassLoader().getResource(resoureName).getPath();
     }
 
     public static Sheet loadExcel(String path, int sheetNumber) throws Exception {
         // estimate file is excel(xlsx.xls) file
-        File file = new File((path));
+        File file = new File(getResourceFullPath(path));
         if (!file.exists() || !file.isFile()) {
             throw new Exception(file.getAbsolutePath() + " is not exists or it's not file");
         }
@@ -65,11 +68,6 @@ public class SmartFileLoadUtil {
 
     public static CSVParser loadCSV(String path, String code, CSVFormat format) throws IOException {
         return new CSVParser(new BufferedReader(new InputStreamReader(getResourceAsInputStream(path), code)), format);
-    }
-
-
-    public static void main(String[] args) {
-        System.out.println(true | true);
     }
 }
 

@@ -20,12 +20,12 @@ import java.util.Iterator;
  */
 public class SmartFileUtils {
 
-    public static void loadExcelFile(String resourceName, SmartExcelLineParser parser) throws Exception {
-        loadExcelFile(resourceName, 0, false, parser);
+    public static void loadExcelFile(String path, SmartExcelLineParser parser) throws Exception {
+        loadExcelFile(path, 0, false, parser);
     }
 
-    public static void loadExcelFile(String resourceName, int sheetNumber, boolean returnHead, SmartExcelLineParser parser) throws Exception {
-        Sheet sheet = SmartFileLoadUtil.loadExcel(resourceName, sheetNumber);
+    public static void loadExcelFile(String path, int sheetNumber, boolean returnHead, SmartExcelLineParser parser) throws Exception {
+        Sheet sheet = SmartFileLoadUtil.loadExcel(path, sheetNumber);
         // 获取工作表的总行数
         int number = sheet.getLastRowNum();
         // 遍历每一行
@@ -40,16 +40,16 @@ public class SmartFileUtils {
         sheet = null;
     }
 
-    public static void loadCsvFile(String resourceName, SmartCsvLineParser parser) throws IOException {
-        loadCsvFile(resourceName, SmartFileLoadUtil.FileCode.GBK, parser);
+    public static void loadCsvFile(String path, SmartCsvLineParser parser) throws IOException {
+        loadCsvFile(path, SmartFileLoadUtil.FileCode.GBK, parser);
     }
 
-    public static void loadCsvFile(String resourceName, SmartFileLoadUtil.FileCode code, SmartCsvLineParser parser) throws IOException {
-        loadCsvFile(resourceName, code == SmartFileLoadUtil.FileCode.GBK ? "GBK" : "UTF-8", CSVFormat.DEFAULT, false, parser);
+    public static void loadCsvFile(String path, SmartFileLoadUtil.FileCode code, SmartCsvLineParser parser) throws IOException {
+        loadCsvFile(path, code == SmartFileLoadUtil.FileCode.GBK ? "GBK" : "UTF-8", CSVFormat.DEFAULT, false, parser);
     }
 
-    public static void loadCsvFile(String resourceName, String code, CSVFormat format, boolean returnHead, SmartCsvLineParser parser) throws IOException {
-        CSVParser csvParser = SmartFileLoadUtil.loadCSV(resourceName, code, format);
+    public static void loadCsvFile(String path, String code, CSVFormat format, boolean returnHead, SmartCsvLineParser parser) throws IOException {
+        CSVParser csvParser = SmartFileLoadUtil.loadCSV(path, code, format);
         Iterator<CSVRecord> iterator = csvParser.iterator();
         // 去掉header
         if (!returnHead && iterator.hasNext()) {
@@ -63,12 +63,12 @@ public class SmartFileUtils {
 
     }
 
-    public static void loadTxtFile(String resourceName, SmartTxtLineParser parser) throws IOException {
-        loadTxtFile(resourceName, "UTF-8", parser);
+    public static void loadTxtFile(String path, SmartTxtLineParser parser) throws IOException {
+        loadTxtFile(path, "UTF-8", parser);
     }
 
-    public static void loadTxtFile(String resourceName, String code, SmartTxtLineParser parser) throws IOException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(SmartFileLoadUtil.getResourceAsInputStream(resourceName), code));
+    public static void loadTxtFile(String path, String code, SmartTxtLineParser parser) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(SmartFileLoadUtil.getResourceAsInputStream(path), code));
         String line = "";
         while ((line = reader.readLine()) != null) {
             parser.parser(line);
@@ -78,12 +78,11 @@ public class SmartFileUtils {
     }
 
     public static void main(String[] args) throws Exception {
-        loadCsvFile("test.csv", new SmartCsvLineParser() {
+        loadTxtFile("C:\\Users\\SMA\\Desktop\\数据中心\\数据中心.txt", new SmartTxtLineParser() {
             @Override
-            public void parser(CSVRecord csvRecord) {
-                System.out.println(csvRecord);
+            public void parser(String line) {
+                System.out.println(line);
             }
         });
     }
-
-}
+    }

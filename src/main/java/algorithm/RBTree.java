@@ -1,4 +1,4 @@
-package hp.smart.whole.analyzer;
+package algorithm;
 
 import org.apache.commons.lang3.ObjectUtils;
 import org.junit.Test;

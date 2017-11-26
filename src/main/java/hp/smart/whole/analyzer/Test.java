@@ -30,6 +30,7 @@ public class Test {
         while ((c=in.read())!=-1){
             System.out.print(c);
         }
+
         out.close();
         in.close();
     }

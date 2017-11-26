@@ -57,5 +57,6 @@ public class StringComparator implements Comparator<String> {
         TreeSet<String> set = new TreeSet<>();
         set.addAll(Arrays.asList("asd", "sd", "er", "era"));
         System.out.println(set);
+
     }
 }

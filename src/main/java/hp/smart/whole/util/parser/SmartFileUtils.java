@@ -60,7 +60,6 @@ public class SmartFileUtils {
         }
         csvParser.close();
         csvParser = null;
-
     }
 
     public static void loadTxtFile(String path, SmartTxtLineParser parser) throws IOException {

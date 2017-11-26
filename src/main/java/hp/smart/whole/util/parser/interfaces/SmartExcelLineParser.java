@@ -8,7 +8,6 @@ import org.apache.poi.ss.usermodel.Row;
  * @Explain:
  */
 public abstract class SmartExcelLineParser implements SmartLineParser<Row> {
-
     @Override
     public abstract void parser(Row row);
 }

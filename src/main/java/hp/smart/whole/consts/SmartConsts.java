@@ -14,6 +14,4 @@ public final class SmartConsts {
     public static final String KAFKA_ZOOKEEPER_SESSION_TIMEOUT = "kafka.zookeeper.session.timeout.ms";
     public static final String KAFKA_ZOOKEEPER_SYNC_TIME = "kafka.zookeeper.sync.time.ms";
     public static final String KAFKA_AUTO_COMMIT_INTERVAL = "kafka.auto.commit.interval.ms";
-
-
 }

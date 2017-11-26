@@ -114,6 +114,7 @@ public class SparkClusterTest implements Serializable {
         if (args != null && args[0].equals("local")) {
             yarn = false;
         }
+
         new SparkClusterTest().test("hdfs://smart-master:8020/tmp/sma/test", yarn);
     }
 }

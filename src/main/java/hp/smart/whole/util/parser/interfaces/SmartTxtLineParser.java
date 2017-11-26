@@ -6,7 +6,6 @@ package hp.smart.whole.util.parser.interfaces;
  * @Explain:
  */
 public abstract class SmartTxtLineParser implements SmartLineParser<String> {
-
     @Override
     public abstract void parser(String line);
 }

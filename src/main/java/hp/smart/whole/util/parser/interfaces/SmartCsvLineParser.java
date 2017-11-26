@@ -8,7 +8,6 @@ import org.apache.commons.csv.CSVRecord;
  * @Explain:
  */
 public abstract class SmartCsvLineParser implements SmartLineParser<CSVRecord> {
-
     @Override
     public abstract void parser(CSVRecord csvRecord);
 }

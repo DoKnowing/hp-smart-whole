@@ -91,5 +91,6 @@ public class SmartComparator implements Comparator<String> {
         TreeSet<String> set = new TreeSet<>(new SmartComparator());
         set.addAll(Arrays.asList("122", "Aa", "133", "A", "一不做,二不休", "一不做", "二"));
         System.out.println(set);
+
     }
 }

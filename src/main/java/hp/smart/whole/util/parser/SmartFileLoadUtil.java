@@ -54,7 +54,6 @@ public class SmartFileLoadUtil {
         if (fileName == null || !(fileName.endsWith(XLSX_SUFFIX) | fileName.endsWith(XLS_SUFFIX))) {
             throw new Exception(file.getAbsolutePath() + " is not excel which is must endwith xlsx/xls");
         }
-
         return WorkbookFactory.create(file).getSheetAt(sheetNumber);
     }
 

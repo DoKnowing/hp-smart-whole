@@ -58,6 +58,7 @@ public class ChineseCharUtil {
         return CJK_PATTERN_NAME.matcher(str.trim()).find();
     }
 
+
     public static void main(String[] args) {
         System.out.println(isChineseStr("`"));
     }

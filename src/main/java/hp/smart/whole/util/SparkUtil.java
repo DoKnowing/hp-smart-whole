@@ -53,7 +53,6 @@ public class SparkUtil {
             for (Map.Entry<String, String> e : customizedConf.entrySet()) {
                 sparkConf.set(e.getKey(), e.getValue());
             }
-
         return sparkConf;
     }
 }

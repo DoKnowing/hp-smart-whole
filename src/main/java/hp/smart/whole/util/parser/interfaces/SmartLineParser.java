@@ -6,6 +6,5 @@ package hp.smart.whole.util.parser.interfaces;
  * @Explain:
  */
 public interface SmartLineParser<T> {
-
     void parser(T line);
 }

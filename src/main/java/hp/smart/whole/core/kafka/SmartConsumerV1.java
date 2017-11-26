@@ -63,6 +63,7 @@ public class SmartConsumerV1 implements Serializable {
         }
     }
 
+
     public void createRdd() {
         JavaSparkContext jsc = new JavaSparkContext();
     }

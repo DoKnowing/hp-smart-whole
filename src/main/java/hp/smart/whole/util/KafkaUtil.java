@@ -41,6 +41,7 @@ public class KafkaUtil {
 
     public static void main(String[] args) {
         System.out.println(createKafkaConConfig(null));
+
         System.out.println(createKafkaProConfig(null));
     }
 }

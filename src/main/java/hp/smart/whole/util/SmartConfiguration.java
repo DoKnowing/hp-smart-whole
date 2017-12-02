@@ -17,11 +17,11 @@ public class SmartConfiguration extends Configuration {
     private static SmartConfiguration _singleton = null;
 
     private SmartConfiguration() {
-        this.addResource("dev/smart-config.xml");
-        this.addResource("core-site.xml");
-        this.addResource("hdfs-site.xml");
-        this.addResource("mapred-site.xml");
-        this.addResource("yarn-site.xml");
+        this.addResource("smart/smart-config.xml");
+        this.addResource("smart/core-site.xml");
+        this.addResource("smart/hdfs-site.xml");
+        this.addResource("smart/mapred-site.xml");
+        this.addResource("smart/yarn-site.xml");
     }
 
     public static SmartConfiguration getInstance() {

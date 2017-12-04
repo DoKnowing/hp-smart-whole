@@ -1,4 +1,4 @@
-package hp.smart.whole.util.parser.interfaces;
+package hp.smart.whole.parser.interfaces;
 
 import org.apache.commons.csv.CSVRecord;
 

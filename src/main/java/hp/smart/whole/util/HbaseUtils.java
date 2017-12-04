@@ -1,4 +1,4 @@
-package hp.smart.whole.core.hbase;
+package hp.smart.whole.util;
 
 import com.alibaba.fastjson.JSON;
 import org.apache.commons.collections.MapUtils;

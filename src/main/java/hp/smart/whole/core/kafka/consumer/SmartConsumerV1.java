@@ -1,4 +1,4 @@
-package hp.smart.whole.core.kafka;
+package hp.smart.whole.core.kafka.consumer;
 
 import hp.smart.whole.util.KafkaUtil;
 import kafka.consumer.Consumer;

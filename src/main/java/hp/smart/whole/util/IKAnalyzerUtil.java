@@ -1,4 +1,4 @@
-package hp.smart.whole.core.hbase.util;
+package hp.smart.whole.util;
 
 
 import org.apache.commons.lang3.StringUtils;

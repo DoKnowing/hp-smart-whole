@@ -1,4 +1,4 @@
-package hp.smart.whole.util.comparator;
+package hp.smart.whole.comparator;
 
 import hp.smart.whole.util.ChineseCharUtil;
 

@@ -1,4 +1,4 @@
-package hp.smart.whole.util.comparator;
+package hp.smart.whole.comparator;
 
 import java.util.Arrays;
 import java.util.Comparator;

@@ -1,6 +1,7 @@
 package hp.smart.whole.core.hbase;
 
 import com.alibaba.fastjson.JSON;
+import hp.smart.whole.util.HbaseUtils;
 import hp.smart.whole.util.SmartConfiguration;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.hadoop.hbase.client.Connection;
